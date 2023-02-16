@@ -72,7 +72,7 @@ public class Employee {
         this.gender = gender;
     }
 
-    public LocalDate getDob() {    0
+    public LocalDate getDob() {
         return dob;
     }
 
