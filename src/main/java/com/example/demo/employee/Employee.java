@@ -1,8 +1,20 @@
 package com.example.demo.employee;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+@Entity
+@Table
 public class Employee {
+    @Id
+    @SequenceGenerator(
+            name = "employee_sequence",
+            sequenceName = "employee_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+
+    )
     private Long id;
     private String firstName;
     private String lastName;
