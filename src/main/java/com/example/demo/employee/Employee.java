@@ -13,6 +13,8 @@ public class Employee {
             allocationSize = 1
     )
     @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "employee_sequence"
 
     )
     private Long id;
