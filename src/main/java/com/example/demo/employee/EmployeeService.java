@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-
     private final EmployeeRepository employeeRepository;
 
     @Autowired
@@ -19,7 +18,6 @@ public class EmployeeService {
     public List<Employee> getEmployees(){
         return employeeRepository.findAll();
     }
-
     public void addNewEmployee(Employee employee){
         System.out.println(employee);
     }

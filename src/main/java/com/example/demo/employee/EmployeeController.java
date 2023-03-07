@@ -25,5 +25,6 @@ public class EmployeeController {
     }
     @PostMapping()
     public void registerNewEmployee(@RequestBody Employee employee){
+        employeeService.addNewEmployee(employee);
     }
 }
