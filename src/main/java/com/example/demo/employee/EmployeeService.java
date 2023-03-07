@@ -20,12 +20,13 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
     public void addNewEmployee(Employee employee){
-        Optional<Employee> employeeByEmail =
+        Optional<Employee> employeeOptional =
                 employeeRepository.findEmployeebyEmail(employee.getEmail());
 
-        if(employeeByEmail.isPresent()){
+        if(employeeOptional.isPresent()){
             throw new IllegalStateException("Email is taken");
         }
-        System.out.println(employee);
+        employeeRepository.save(employee);
+
     }
 }
