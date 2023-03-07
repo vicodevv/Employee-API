@@ -40,5 +40,11 @@ public class EmployeeService {
         }
         employeeRepository.deleteById(employeeId);
     }
+    public void updateEmployee(Long employeeId,
+                                String name,
+                               String email){
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new IllegalStateException("Employee with " + employeeId + " does not exist"));
+    }
 
 }

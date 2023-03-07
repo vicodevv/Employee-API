@@ -28,7 +28,16 @@ public class EmployeeController {
         employeeService.addNewEmployee(employee);
     }
     @DeleteMapping(path = "{EmployeeId}")
-    public void deleteEmployee(@PathVariable("EmployeeId") Long employeeId){
+    public void deleteEmployee(
+            @PathVariable("EmployeeId") Long employeeId){
         employeeService.deleteEmployee(employeeId);
+    }
+    @PutMapping(path = {"EmployeeId"})
+    public void updateEmployee(
+            @PathVariable("EmployeeId") Long employeeId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email){
+        employeeService.updateEmployee(employeeId, name, email);
+
     }
 }
