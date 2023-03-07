@@ -2,6 +2,8 @@ package com.example.demo.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,6 +29,16 @@ public class EmployeeService {
             throw new IllegalStateException("Email is taken");
         }
         employeeRepository.save(employee);
-
     }
+    public void deleteEmployee(Long employeeId){
+        boolean exists = employeeRepository.existsById(employeeId);
+
+        if(!exists){
+            throw new IllegalStateException(
+                    "Employee with id " + employeeId + " does not exist"
+            );
+        }
+        employeeRepository.deleteById(employeeId);
+    }
+
 }
