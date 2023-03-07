@@ -2,6 +2,7 @@ package com.example.demo.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -41,6 +42,7 @@ public class EmployeeService {
         }
         employeeRepository.deleteById(employeeId);
     }
+    @Transactional
     public void updateEmployee(Long employeeId,
                                 String firstName,
                                String lastName,
