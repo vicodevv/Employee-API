@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -41,10 +42,17 @@ public class EmployeeService {
         employeeRepository.deleteById(employeeId);
     }
     public void updateEmployee(Long employeeId,
-                                String name,
+                                String firstName,
+                               String lastName,
                                String email){
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(() -> new IllegalStateException("Employee with " + employeeId + " does not exist"));
+
+        if(firstName != null &&
+            firstName.length() > 0 &&
+            !Objects.equals(employee.getFirstName(), firstName)){
+            employee.setFirstName(firstName);
+        }
     }
 
 }
