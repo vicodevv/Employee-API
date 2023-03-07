@@ -27,14 +27,14 @@ public class EmployeeController {
     public void registerNewEmployee(@RequestBody Employee employee){
         employeeService.addNewEmployee(employee);
     }
-    @DeleteMapping(path = "{EmployeeId}")
+    @DeleteMapping(path = "{employeeId}")
     public void deleteEmployee(
-            @PathVariable("EmployeeId") Long employeeId){
+            @PathVariable("employeeId") Long employeeId){
         employeeService.deleteEmployee(employeeId);
     }
-    @PutMapping(path = {"EmployeeId"})
+    @PutMapping(path = {"employeeId"})
     public void updateEmployee(
-            @PathVariable("EmployeeId") Long employeeId,
+            @PathVariable("employeeId") Long employeeId,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,
             @RequestParam(required = false) String email){
