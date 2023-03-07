@@ -53,6 +53,22 @@ public class EmployeeService {
             !Objects.equals(employee.getFirstName(), firstName)){
             employee.setFirstName(firstName);
         }
+
+        if(lastName != null &&
+            lastName.length() > 0 &&
+            !Objects.equals(employee.getLastName(), lastName)){
+            employee.setLastName(lastName);
+        }
+        if(email != null &&
+            email.length() > 0 &&
+            !Objects.equals(employee.getEmail(), email)){
+            Optional<Employee> employeeOptional = employeeRepository
+                    .findEmployeebyEmail(email);
+            if(employeeOptional.isPresent()){
+                throw new IllegalStateException("Email is taken");
+            }
+            employee.setEmail(email);
+        }
     }
 
 }
