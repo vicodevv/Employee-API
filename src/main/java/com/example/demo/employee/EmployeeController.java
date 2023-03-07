@@ -18,26 +18,31 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+
     @GetMapping()
     public List<Employee> getEmployees(){
         return employeeService.getEmployees();
 
     }
+
     @PostMapping()
     public void registerNewEmployee(@RequestBody Employee employee){
         employeeService.addNewEmployee(employee);
     }
+
     @DeleteMapping(path = "{employeeId}")
     public void deleteEmployee(
             @PathVariable("employeeId") Long employeeId){
         employeeService.deleteEmployee(employeeId);
     }
+
     @PutMapping(path = {"employeeId"})
+    //@RequestMapping(path = {"employeeId"}, method = RequestMethod.PUT)
     public void updateEmployee(
             @PathVariable("employeeId") Long employeeId,
-            @RequestParam(required = false) String firstName,
-            @RequestParam(required = false) String lastName,
-            @RequestParam(required = false) String email){
+            @RequestBody(required = false) String firstName,
+            @RequestBody(required = false) String lastName,
+            @RequestBody(required = false) String email){
         employeeService.updateEmployee(employeeId, firstName, lastName, email);
 
     }

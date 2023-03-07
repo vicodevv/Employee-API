@@ -42,6 +42,7 @@ public class EmployeeService {
         }
         employeeRepository.deleteById(employeeId);
     }
+
     @Transactional
     public void updateEmployee(Long employeeId,
                                 String firstName,
