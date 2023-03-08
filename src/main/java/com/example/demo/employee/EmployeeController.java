@@ -1,5 +1,6 @@
 package com.example.demo.employee;
 
+import com.example.demo.dto.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,12 +39,8 @@ public class EmployeeController {
 
     @PutMapping(path = {"employeeId"})
     //@RequestMapping(path = {"employeeId"}, method = RequestMethod.PUT)
-    public void updateEmployee(
-            @PathVariable("employeeId") Long employeeId,
-            @RequestBody(required = false) String firstName,
-            @RequestBody(required = false) String lastName,
-            @RequestBody(required = false) String email){
-        employeeService.updateEmployee(employeeId, firstName, lastName, email);
+    public void updateEmployee(EmployeeDto request){
+        employeeService.updateEmployee(request);
 
     }
 }

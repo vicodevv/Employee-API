@@ -1,5 +1,6 @@
 package com.example.demo.employee;
 
+import com.example.demo.dto.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,35 +44,9 @@ public class EmployeeService {
         employeeRepository.deleteById(employeeId);
     }
 
-    @Transactional
-    public void updateEmployee(Long employeeId,
-                                String firstName,
-                               String lastName,
-                               String email){
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new IllegalStateException("Employee with " + employeeId + " does not exist"));
-
-        if(firstName != null &&
-            firstName.length() > 0 &&
-            !Objects.equals(employee.getFirstName(), firstName)){
-            employee.setFirstName(firstName);
-        }
-
-        if(lastName != null &&
-            lastName.length() > 0 &&
-            !Objects.equals(employee.getLastName(), lastName)){
-            employee.setLastName(lastName);
-        }
-        if(email != null &&
-            email.length() > 0 &&
-            !Objects.equals(employee.getEmail(), email)){
-            Optional<Employee> employeeOptional = employeeRepository
-                    .findEmployeebyEmail(email);
-            if(employeeOptional.isPresent()){
-                throw new IllegalStateException("Email is taken");
-            }
-            employee.setEmail(email);
-        }
+    @Transactional(rollbackFor = Exception.class)
+    public void updateEmployee(EmployeeDto request){
+        var employeeDto = request;
     }
 
 }
