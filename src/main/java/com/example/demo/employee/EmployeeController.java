@@ -37,10 +37,4 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
     }
 
-    @PutMapping(path = {"employeeId"})
-    //@RequestMapping(path = {"employeeId"}, method = RequestMethod.PUT)
-    public void updateEmployee(EmployeeDto request){
-        employeeService.updateEmployee(request);
-
-    }
 }
